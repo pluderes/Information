@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css"
+    />
+    <link rel="stylesheet" href="css/SignUp-Login/login.css" />
+  </head>
+
+  <body>
+    <div class="center">
+      <div class="col-3" id="login">
+        <h1>LOGIN</h1>
+        <div>
+          <i class="fas fa-user f-28 text-white"></i>
+          <input type="text" name="username" id="email" placeholder="Email" />
+        </div>
+        <div>
+          <i class="fas fa-key f-28 text-white"></i>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+          />
+        </div>
+        <a href="#">Forgot password?</a>
+        <br />
+        <button type="submit" class="btn" id="btnLogin">Login</button>
+        <button type="submit" class="btn" id="Sigup">Sigup</button>
+        <p>OR</p>
+        <div class="or">
+          <button
+            type="submit"
+            class="btn"
+            id="fb"
+            style="width: -webkit-fill-available"
+          >
+            <i class="fab fa-facebook-square"></i> Login with Facebook
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+
+  <script src="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js"></script>
+  <script src="./js/SignUp-Login/FireBase.js" type="module"></script>
+  <script src="./js/SignUp-Login/login.js" type="module"></script>
+</html>

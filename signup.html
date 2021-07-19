@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css"
+    />
+
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body>
+    <div class="center">
+      <div class="col-3" id="login">
+        <h1>SIGN UP</h1>
+        <hr style="border: 1px white dashed" />
+        <div>
+          <i class="fas fa-user text-white"></i>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+          />
+        </div>
+        <div>
+          <i class="fas fa-mobile-alt text-white" style="margin-left: 3px"></i>
+          <input
+            type="text"
+            name="phone"
+            id="phone"
+            placeholder="Phone"
+            style="margin-left: 2px"
+          />
+        </div>
+        <div>
+          <i class="fas fa-at text-white"></i>
+          <input type="email" name="email" id="email" placeholder="Email" />
+        </div>
+        <div>
+          <i class="fas fa-user-circle text-white"></i>
+          <input type="file" name="avatar" id="avatar" placeholder="Avatar" />
+        </div>
+        <div>
+          <i class="fas fa-key f-28 text-white"></i>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+          />
+        </div>
+        <div>
+          <i class="fas fa-key f-28 text-white"></i>
+          <input
+            type="password"
+            name="rePassword"
+            id="rePassword"
+            placeholder="Retype Password"
+          />
+        </div>
+        <button type="submit" class="btn" id="btnSignup" style="margin-bottom: 20px">
+          Sign up
+        </button>
+        <button type="submit" class="btn" id="Login" style="margin-bottom: 20px">
+          Log in
+        </button>
+      </div>
+    </div>
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-analytics.js"></script> -->
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+
+    <script src="./JS/FireBase.js" type="module"></script>
+    <script src="JS/index.js" type="module"></script>
+    <script src="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js"></script>
+  </body>
+  <!-- fb -->
+</html>
