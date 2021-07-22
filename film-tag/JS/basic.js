@@ -12,6 +12,7 @@ class basic extends HTMLElement {
       age: "",
       time: "",
       like: "",
+      id: "",
     };
   }
 
@@ -68,7 +69,7 @@ class basic extends HTMLElement {
                 <span class="count-box">${this.props.like}</span>
               </li>
               <li>
-                <span><i class="fas fa-plus"></i></span>
+                <span><i class="fas fa-plus" id="${this.props.id}"></i></span>
               </li>
             </ul>
           </div>
@@ -79,7 +80,7 @@ class basic extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["avatar", "href", "name", "age", "time", "like"];
+    return ["avatar", "href", "name", "age", "time", "like", "id"];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {

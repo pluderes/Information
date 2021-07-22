@@ -47,7 +47,6 @@ async function addFilms(film) {
 // addFilms(filmData.film9);
 // addFilms(filmData.film10);
 // };
-
 /**
  * ReadFilm
  * @param {*} film
@@ -57,11 +56,8 @@ async function getFilms() {
     const data = await firebase.firestore().collection("films").get();
     rowContent.firstChild.firstChild.style.width = "unset";
     rowContent.firstChild.firstChild.style.display = "flex";
-    let count = 0;
     data.docs.forEach((doc) => {
       console.log(doc.id, " => ", doc.data().filmName);
-      count++;
-
       rowContent.firstChild.firstChild.insertAdjacentHTML(
         "beforeend",
         `<basic-para
@@ -71,13 +67,81 @@ async function getFilms() {
         age = "20"
         time = "3h 30m"
         like = "30"
+        id = "${doc.id}"
       ></basic-para>`
       );
     });
-    console.log(count);
+    console.log("----------------------------------------------");
   } catch (error) {
     console.log(error);
   }
 }
-
 getFilms();
+
+// -------------------------------------------------------------------
+// console.log(card);
+// console.log(card.length);
+// for (let i = 0; i < card.length; i++) {
+//   let add = document.getElementById(`${card[i]}`);
+//   add.onclick = () => {
+//     console.dir(card[i]);
+//   };
+// }
+
+// -------------------------- Log out --------------------------------
+const Logout = document.getElementById("Logout");
+Logout.onclick = () => {
+  localStorage.removeItem("emailLogin");
+};
+let emailLogin = localStorage.getItem("emailLogin");
+
+// ----------------------------- Add follow film ---------------------
+let IDfilm = "";
+async function listFilms() {
+  try {
+    const data = await firebase.firestore().collection("films").get();
+    let count = data.docs.length;
+    for (let i = 0; i < count; i++) {
+      let tagfilm = document.getElementById(`${data.docs[i].id}`);
+      tagfilm.onclick = () => {
+        if (emailLogin == null) {
+          alert("Bạn chưa đăng nhập!");
+        } else {
+          IDfilm = tagfilm.id;
+          addFollowedFilms();
+        }
+      };
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+listFilms();
+async function addFollowedFilms() {
+  try {
+    let id = await firebase
+      .firestore()
+      .collection("users")
+      .where("email", "==", emailLogin)
+      .get();
+    console.log(IDfilm);
+    const user = await firebase
+      .firestore()
+      .collection("users")
+      .doc(id.docs[0].id)
+      .update({
+        listFollowedFilm: firebase.firestore.FieldValue.arrayUnion(IDfilm),
+      });
+    swal({
+      title: `Thêm vào danh sách thành công!`,
+      type: "warning",
+      showCancelButton: false,
+      confirmButtonColor: "#f8c086",
+      confirmButtonText: "Ok",
+      closeOnConfirm: false,
+      closeOnCancel: false,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
