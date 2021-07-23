@@ -8,16 +8,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Streamit</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="shortcut icon" href="./images/favicon.ico" />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <!-- Typography CSS -->
-    <link rel="stylesheet" href="css/typography.css" />
+    <link rel="stylesheet" href="./css/typography.css" />
     <!-- Style -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <!-- Responsive -->
-    <link rel="stylesheet" href="css/responsive.css" />
-
+    <link rel="stylesheet" href="./css/responsive.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
@@ -71,41 +74,44 @@
                   <div class="menu-main-menu-container">
                     <ul id="top-menu" class="navbar-nav ml-auto">
                       <li class="menu-item">
-                        <a href="index.html">Home</a>
+                        <a href="./index.html">Home</a>
                       </li>
                       <li class="menu-item">
-                        <a href="movie-category.html">Movies</a>
+                        <a href="./movie-category.html">Action</a>
                       </li>
                       <li class="menu-item">
-                        <a href="show-category.html">Tv Shows</a>
+                        <a href="./horrorFilm.html">Horror</a>
                       </li>
                       <!-- <li class="menu-item">
                                     <a href="movie-category.html">Blog</a>
                                  </li> -->
                       <li class="menu-item">
-                        <a href="#">Pages</a>
-                        <ul class="sub-menu">
-                          <li class="menu-item">
-                            <a href="about-us.html">About Us</a>
-                          </li>
-                          <li class="menu-item">
-                            <a href="contact.html">Contact</a>
-                          </li>
-                          <li class="menu-item"><a href="faq.html">FAQ</a></li>
-                          <li class="menu-item">
-                            <a href="privacy-policy.html">Privacy-Policy</a>
-                          </li>
-                          <li class="menu-item">
-                            <a href="#">Pricing</a>
-                            <ul class="sub-menu">
+                        <a href="#">Film Genres</a>
+                        <ul class="sub-menu menu-item-expand">
+                          <div class="menu-expand-inner">
+                            <ul>
                               <li class="menu-item">
-                                <a href="pricing-plan-1.html">Pricing Plan 1</a>
+                                <a href="./comedyFilm.html">Comedy</a>
                               </li>
                               <li class="menu-item">
-                                <a href="pricing-plan-2.html">Pricing Plan 2</a>
+                                <a href="./dramaFilm.html">Drama</a>
+                              </li>
+                              <li class="menu-item">
+                                <a href="./fantasyFilm.html">Fantasy</a>
                               </li>
                             </ul>
-                          </li>
+                            <ul>
+                              <li class="menu-item">
+                                <a href="./mysteryFilm.html">Mystery</a>
+                              </li>
+                              <li class="menu-item">
+                                <a href="./romanceFilm.html">Romance</a>
+                              </li>
+                              <li class="menu-item">
+                                <a href="./thrillerFilm.html">Thriller</a>
+                              </li>
+                            </ul>
+                          </div>
                         </ul>
                       </li>
                     </ul>
@@ -296,7 +302,7 @@
                                       ></i>
                                     </div>
                                     <div class="media-body ml-3">
-                                      <h6 class="mb-0">Logout</h6>
+                                      <h6 class="mb-0">Sign Out</h6>
                                     </div>
                                   </div>
                                 </a>
@@ -470,7 +476,7 @@
                                   ></i>
                                 </div>
                                 <div class="media-body ml-3" id="Logout">
-                                  <h6 class="my-0">Logout</h6>
+                                  <h6 class="my-0">Sign Out</h6>
                                 </div>
                               </div>
                             </a>
@@ -607,13 +613,11 @@
                     data-animation-in="fadeInUp"
                     data-delay-in="1.2"
                   >
-                    <a
-                      href="./show-details.html"
-                      class="btn btn-hover iq-button"
+                    <a href="./movie-intro.html" class="btn btn-hover iq-button"
                       ><i class="fa fa-play mr-2" aria-hidden="true"></i>Play
                       Now</a
                     >
-                    <a href="./show-details.html" class="btn btn-link"
+                    <a href="./movie-intro.html" class="btn btn-link"
                       >More details</a
                     >
                   </div>
@@ -1246,7 +1250,7 @@
     <script defer src="./models/entities/firebase.js" type="module"></script>
 
     <!-- sweetalert -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js"></script>
 
     <!-- script -->
 

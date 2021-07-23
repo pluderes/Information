@@ -22,9 +22,20 @@
     <link rel="stylesheet" href="./css/style.css" />
     <!-- Responsive -->
     <link rel="stylesheet" href="./css/responsive.css" />
+    <!-- SweetAlert2 -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.19/sweetalert2.min.js"
+      integrity="sha512-jfVndX8aB+LSJHnrd4BY42vPo2J6NjccZclbhoXEvP8sFnZrj4umbXNHtdoYvacUAN+4X5su5wXjDGAuz5ceog=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <link
       rel="stylesheet"
-      href="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     />
   </head>
 
@@ -297,7 +308,7 @@
                                       ></i>
                                     </div>
                                     <div class="media-body ml-3">
-                                      <h6 class="mb-0">Logout</h6>
+                                      <h6 class="mb-0">Sign Out</h6>
                                     </div>
                                   </div>
                                 </a>
@@ -471,7 +482,7 @@
                                   ></i>
                                 </div>
                                 <div class="media-body ml-3">
-                                  <h6 class="my-0">Logout</h6>
+                                  <h6 class="my-0">Sign Out</h6>
                                 </div>
                               </div>
                             </a>
@@ -496,46 +507,53 @@
         <div class="row">
           <div class="col-lg-4 mb-3">
             <div class="sign-user_card text-center">
-              <img
-                id="avatar"
-                src=""
+              <div
+                id="divAvatar"
                 class="rounded-circle img-fluid d-block mx-auto mb-3"
-                alt="user"
-              />
+              >
+                <img
+                  id="avatar"
+                  src=""
+                  class="rounded-circle img-fluid d-block mx-auto mb-3"
+                  alt="user"
+                />
+              </div>
               <h4 id="username" class="mb-3">Name</h4>
               <hr />
               <h5 class="mb-3 pb-3 a-border">Personal Details</h5>
               <div class="row align-items-center justify-content-between mb-3">
-                <div class="col-md-9">
+                <div class="col-md-12">
                   <span class="text-light font-size-13">Email</span>
                   <p id="email" class="mb-0"></p>
                 </div>
-                <div class="col-md-3 text-md-right text-left">
-                  <a href="#" class="text-primary">Change</a>
-                </div>
               </div>
               <div class="row align-items-center justify-content-between mb-3">
-                <div class="col-md-9">
-                  <span class="text-light font-size-13">Password</span>
-                  <p id="password" class="mb-0">********</p>
-                  <input type="hidden" id="pass">
-                </div>
-                <div class="col-md-3 text-md-right text-left">
-                  <a href="#" class="text-primary">Change</a>
-                </div>
-              </div>
-              <div class="row align-items-center justify-content-between mb-3">
-                <div class="col-md-9">
+                <div class="col-md-12">
                   <span class="text-light font-size-13">Phone Number</span>
                   <p id="phone" class="mb-0"></p>
                 </div>
-                <div class="col-md-3 text-md-right text-left">
-                  <a href="#" class="text-primary">Change</a>
-                </div>
+              </div>
+              <div class="col-md-12">
+                <button
+                  style="border: unset; background: unset; padding: 10px"
+                  class="text-primary"
+                  id="btnChangeInfo"
+                >
+                  Change
+                </button>
+              </div>
+              <div class="change col-md-12">
+                <button
+                  style="border: unset; background: unset"
+                  class="text-primary"
+                  id="btnChangePW"
+                >
+                  Change password
+                </button>
               </div>
             </div>
           </div>
-          <div class="col-lg-8">
+          <div id="listFollowedFilm" class="col-lg-8">
             <h5 class="mb-3 pb-3 a-border">List Followed Films</h5>
           </div>
         </div>
@@ -681,14 +699,15 @@
     <!-- Custom JS-->
     <script src="./js/custom.js"></script>
 
-    <!-- firebase -->
+    <!-- firebase account -->
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
 
     <script src="./js/SignUp-Login/FireBase.js" type="module"></script>
     <script src="./js/SignUp-Login/setting.js" type="module"></script>
-    <script src="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js"></script>
+    <script src="./film-tag/JS/basic2.js" type="module"></script>
+    <script src="./film-tag/JS/style.js" type="module"></script>
   </body>
 
   <!-- Mirrored from templates.iqonic.design/streamit/frontend/html/setting.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Jul 2021 14:28:56 GMT -->

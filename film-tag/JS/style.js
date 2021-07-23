@@ -27,6 +27,7 @@ crossorigin="anonymous"
 <style>
 * {
     font-family: Roboto, sans-serif;
+    list-style-type: none;
   }
   img{
     max-width: 100%;

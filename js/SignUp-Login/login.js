@@ -11,8 +11,7 @@ btnLogin.onclick = () => {
     localStorage.setItem("emailLogin", email.value);
   } else {
     swal({
-      title:
-        "Trình duyệt của bạn không hỗ trợ localStorage. Hãy nâng cấp trình duyệt để sử dụng!",
+      title: "Your browser does not support localStorage!",
       type: "warning",
       showCancelButton: false,
       confirmButtonColor: "#f8c086",
@@ -30,7 +29,7 @@ btnLogin.onclick = () => {
       if (user.emailVerified == true) {
         swal(
           {
-            title: "Đăng nhập thành công!",
+            title: "Sign in Success!",
             type: "success",
             showCancelButton: false,
             confirmButtonColor: "#40f756",
@@ -46,7 +45,7 @@ btnLogin.onclick = () => {
         );
       } else {
         swal({
-          title: "Email chưa được xác nhận!",
+          title: "Unconfirmed email!",
           type: "warning",
           showCancelButton: false,
           confirmButtonColor: "#f8c086",
@@ -58,7 +57,7 @@ btnLogin.onclick = () => {
     })
     .catch((error) => {
       swal({
-        title: "Email hoặc mật khẩu sai rồi!",
+        title: "Incorrect username or password!",
         type: "warning",
         showCancelButton: false,
         confirmButtonColor: "#f8c086",

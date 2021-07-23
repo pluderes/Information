@@ -21,7 +21,7 @@ class basic extends HTMLElement {
     const inner = `
         ${styleInLine}
         <li class="slide-item">
-        <div class="component col-12 ">
+        <div class="component col-12">
           <div class="img">
             <img src="${this.props.avatar}" alt=""/>
           </div>

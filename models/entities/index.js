@@ -62,11 +62,11 @@ async function getFilms() {
         "beforeend",
         `<basic-para
         avatar = "./img/02.jpg"
-        href = "Href-Film2"
+        href = "./movie-intro.html"
         name = "${doc.data().filmName}"
-        age = "20"
-        time = "3h 30m"
-        like = "30"
+        age = "${doc.data().age}"
+        time = "${doc.data().time} m"
+        like = "${doc.data().vote}"
         id = "${doc.id}"
       ></basic-para>`
       );
@@ -78,16 +78,6 @@ async function getFilms() {
 }
 getFilms();
 
-// -------------------------------------------------------------------
-// console.log(card);
-// console.log(card.length);
-// for (let i = 0; i < card.length; i++) {
-//   let add = document.getElementById(`${card[i]}`);
-//   add.onclick = () => {
-//     console.dir(card[i]);
-//   };
-// }
-
 // -------------------------- Log out --------------------------------
 const Logout = document.getElementById("Logout");
 Logout.onclick = () => {
@@ -95,7 +85,7 @@ Logout.onclick = () => {
 };
 let emailLogin = localStorage.getItem("emailLogin");
 
-// ----------------------------- Add follow film ---------------------
+// ---------------------- Add follow film ----------------------------
 let IDfilm = "";
 async function listFilms() {
   try {
@@ -105,7 +95,15 @@ async function listFilms() {
       let tagfilm = document.getElementById(`${data.docs[i].id}`);
       tagfilm.onclick = () => {
         if (emailLogin == null) {
-          alert("Bạn chưa đăng nhập!");
+          swal({
+            title: `Please log in to use this feature!`,
+            type: "warning",
+            showCancelButton: false,
+            confirmButtonColor: "#f8c086",
+            confirmButtonText: "Ok",
+            closeOnConfirm: false,
+            closeOnCancel: false,
+          });
         } else {
           IDfilm = tagfilm.id;
           addFollowedFilms();
@@ -124,23 +122,38 @@ async function addFollowedFilms() {
       .collection("users")
       .where("email", "==", emailLogin)
       .get();
-    console.log(IDfilm);
-    const user = await firebase
-      .firestore()
-      .collection("users")
-      .doc(id.docs[0].id)
-      .update({
-        listFollowedFilm: firebase.firestore.FieldValue.arrayUnion(IDfilm),
+
+    // console.log(IDfilm);
+    // console.log(id.docs[0].data().listFollowedFilm);
+
+    if (id.docs[0].data().listFollowedFilm.includes(IDfilm)) {
+      swal({
+        title: "Already on the list!",
+        type: "warning",
+        showCancelButton: false,
+        confirmButtonColor: "#40f756",
+        confirmButtonText: "Ok",
+        closeOnConfirm: false,
+        closeOnCancel: false,
       });
-    swal({
-      title: `Thêm vào danh sách thành công!`,
-      type: "warning",
-      showCancelButton: false,
-      confirmButtonColor: "#f8c086",
-      confirmButtonText: "Ok",
-      closeOnConfirm: false,
-      closeOnCancel: false,
-    });
+    } else {
+      const user = await firebase
+        .firestore()
+        .collection("users")
+        .doc(id.docs[0].id)
+        .update({
+          listFollowedFilm: firebase.firestore.FieldValue.arrayUnion(IDfilm),
+        });
+      swal({
+        title: "Added success!",
+        type: "success",
+        showCancelButton: false,
+        confirmButtonColor: "#40f756",
+        confirmButtonText: "Ok",
+        closeOnConfirm: false,
+        closeOnCancel: false,
+      });
+    }
   } catch (error) {
     console.log(error);
   }
