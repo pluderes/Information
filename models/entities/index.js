@@ -57,7 +57,7 @@ async function getFilms() {
     rowContent.firstChild.firstChild.style.width = "unset";
     rowContent.firstChild.firstChild.style.display = "flex";
     data.docs.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data().filmName);
+      // console.log(doc.id, " => ", doc.data().filmName);
       rowContent.firstChild.firstChild.insertAdjacentHTML(
         "beforeend",
         `<basic-para
@@ -70,8 +70,9 @@ async function getFilms() {
         id = "${doc.id}"
       ></basic-para>`
       );
+      let a = document.getElementById(`${doc.id}`);
+      a.id = "";
     });
-    console.log("----------------------------------------------");
   } catch (error) {
     console.log(error);
   }
@@ -84,77 +85,3 @@ Logout.onclick = () => {
   localStorage.removeItem("emailLogin");
 };
 let emailLogin = localStorage.getItem("emailLogin");
-
-// ---------------------- Add follow film ----------------------------
-let IDfilm = "";
-async function listFilms() {
-  try {
-    const data = await firebase.firestore().collection("films").get();
-    let count = data.docs.length;
-    for (let i = 0; i < count; i++) {
-      let tagfilm = document.getElementById(`${data.docs[i].id}`);
-      tagfilm.onclick = () => {
-        if (emailLogin == null) {
-          swal({
-            title: `Please log in to use this feature!`,
-            type: "warning",
-            showCancelButton: false,
-            confirmButtonColor: "#f8c086",
-            confirmButtonText: "Ok",
-            closeOnConfirm: false,
-            closeOnCancel: false,
-          });
-        } else {
-          IDfilm = tagfilm.id;
-          addFollowedFilms();
-        }
-      };
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
-listFilms();
-async function addFollowedFilms() {
-  try {
-    let id = await firebase
-      .firestore()
-      .collection("users")
-      .where("email", "==", emailLogin)
-      .get();
-
-    // console.log(IDfilm);
-    // console.log(id.docs[0].data().listFollowedFilm);
-
-    if (id.docs[0].data().listFollowedFilm.includes(IDfilm)) {
-      swal({
-        title: "Already on the list!",
-        type: "warning",
-        showCancelButton: false,
-        confirmButtonColor: "#40f756",
-        confirmButtonText: "Ok",
-        closeOnConfirm: false,
-        closeOnCancel: false,
-      });
-    } else {
-      const user = await firebase
-        .firestore()
-        .collection("users")
-        .doc(id.docs[0].id)
-        .update({
-          listFollowedFilm: firebase.firestore.FieldValue.arrayUnion(IDfilm),
-        });
-      swal({
-        title: "Added success!",
-        type: "success",
-        showCancelButton: false,
-        confirmButtonColor: "#40f756",
-        confirmButtonText: "Ok",
-        closeOnConfirm: false,
-        closeOnCancel: false,
-      });
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}

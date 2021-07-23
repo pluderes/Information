@@ -30,8 +30,6 @@ try {
     email.innerText = "";
     username.innerText = "";
     phone.innerText = "";
-    password.innerText = "";
-    passHidden = "";
   }
 } catch (error) {
   swal({
