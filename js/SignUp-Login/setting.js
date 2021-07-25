@@ -23,8 +23,8 @@ try {
       avatar.src = userInformation.avatar;
     }
     email.innerText = userInformation.email;
-    username.innerText = userInformation.username;
-    phone.innerText = userInformation.phone;
+    username.innerText = userInformation.userName;
+    phone.innerText = userInformation.phoneNumber;
   } else {
     avatar.src = "./images/user/user.jpg";
     email.innerText = "";
@@ -58,6 +58,7 @@ async function changeinformation() {
         html: `<style>
           input{
             background:unset; 
+            border: unset;
           }
           label{
             float: left;
@@ -66,7 +67,7 @@ async function changeinformation() {
             color: while;
           }
           .swal2-modal{
-            background: rgba(0, 0, 0, 0.6);
+            background: black;
           }
         </style>
           <hr>
@@ -90,8 +91,8 @@ async function changeinformation() {
             .collection("users")
             .doc(id.docs[0].id)
             .update({
-              username: result.value.userName,
-              phone: result.value.phoneNumber,
+              userName: result.value.userName,
+              phoneNumber: result.value.phoneNumber,
             });
           Swal.fire({
             icon: "success",
@@ -106,7 +107,7 @@ async function changeinformation() {
             .collection("users")
             .doc(id.docs[0].id)
             .update({
-              username: result.value.userName,
+              userName: result.value.userName,
             });
           Swal.fire({
             icon: "success",
@@ -121,7 +122,7 @@ async function changeinformation() {
             .collection("users")
             .doc(id.docs[0].id)
             .update({
-              phone: result.value.phoneNumber,
+              phoneNumber: result.value.phoneNumber,
             });
           Swal.fire({
             icon: "success",
@@ -149,9 +150,6 @@ async function changepassword() {
       Swal.fire({
         title: "Change Password",
         html: `<style>
-          input{
-            background:unset; 
-          }
           label{
             float: left;
           }
@@ -159,7 +157,7 @@ async function changepassword() {
             color: while;
           }
           .swal2-modal{
-            background: rgba(0, 0, 0, 0.6);
+            background: black;
           }
         </style>
           <hr>
@@ -180,7 +178,7 @@ async function changepassword() {
             .collection("users")
             .doc(id.docs[0].id)
             .update({
-              password: MD5(result.value.PW),
+              passWord: MD5(result.value.PW),
             });
           // update pass in auth()
           const userAuth = firebase.auth().currentUser;
@@ -254,42 +252,50 @@ async function changeAvatar() {
       .where("email", "==", emailLogin)
       .get();
 
-    avt.onclick = () => {
-      Swal.fire({
-        title: "Change Avatar",
+    avt.onclick = async () => {
+      const { value: file } = await Swal.fire({
         html: `<style>
-          input{
-            background:unset; 
-          }
-          label{
-            float: left;
-          }
           .swal2-popup .swal2-title{
             color: while;
           }
           .swal2-modal{
-            background: rgba(0, 0, 0, 0.6);
+            background: black;
           }
-        </style>
-          <hr>
-          <label for="Avt">Avatar</label>
-          <input type="file" name="Avt" id="Avt" class="swal2-input">
+          .progress {
+            -webkit-appearance: none;
+            appearance: none;
+          }
+          </style>
         `,
-        confirmButtonText: "Confirm",
-        focusConfirm: false,
-        preConfirm: () => {
-          const Avt = Swal.getPopup().querySelector("#Avt").value;
-          return { avt: Avt };
+        title: "Select image",
+        input: "file",
+        inputAttributes: {
+          accept: "image/*",
+          "aria-label": "Upload your profile picture",
         },
-      }).then(async function (result) {
-        if (result.value.avt != "") {
-          console.log(result.value.avt);
-          // Swal.fire({
-          //   icon: "success",
-          //   title: "Update success!",
-          // });
-        }
       });
+
+      if (file) {
+        var storageRef = firebase.storage().ref("avatar/" + file.name);
+        storageRef.put(file);
+        const user = await firebase
+          .firestore()
+          .collection("users")
+          .doc(id.docs[0].id)
+          .update({
+            avatar: file.name,
+          });
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          Swal.fire({
+            title: "Your uploaded picture",
+            imageUrl: e.target.result,
+            imageAlt: "The uploaded picture",
+          });
+        };
+        console.log(file.name);
+        reader.readAsDataURL(file);
+      }
     };
   }
 }

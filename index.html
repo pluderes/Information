@@ -302,7 +302,7 @@
                                       ></i>
                                     </div>
                                     <div class="media-body ml-3">
-                                      <h6 class="mb-0">Sign Out</h6>
+                                      <h6 id="SignMB" class="mb-0"></h6>
                                     </div>
                                   </div>
                                 </a>
@@ -476,7 +476,7 @@
                                   ></i>
                                 </div>
                                 <div class="media-body ml-3" id="Logout">
-                                  <h6 class="my-0">Sign Out</h6>
+                                  <h6 id="SignWEB" class="mb-0"></h6>
                                 </div>
                               </div>
                             </a>
@@ -1247,7 +1247,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
 
-    <script defer src="./models/entities/firebase.js" type="module"></script>
+    <!-- <script defer src="./models/entities/firebase.js" type="module"></script> -->
+    <script src="js/SignUp-Login/FireBase.js" type="module"></script>
 
     <!-- sweetalert -->
     <script src="https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js"></script>
@@ -1277,5 +1278,6 @@
     <script src="./js/slick-animation.min.js"></script>
     <!-- Custom JS-->
     <script src="./js/custom.js"></script>
+    <script src="./js/SignUp-Login/signout.js"></script>
   </body>
 </html>

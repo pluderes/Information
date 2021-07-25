@@ -79,9 +79,3 @@ async function getFilms() {
 }
 getFilms();
 
-// -------------------------- Log out --------------------------------
-const Logout = document.getElementById("Logout");
-Logout.onclick = () => {
-  localStorage.removeItem("emailLogin");
-};
-let emailLogin = localStorage.getItem("emailLogin");

@@ -98,11 +98,11 @@ async function createAccount() {
         .firestore()
         .collection("users")
         .add({
-          username: username.value,
-          phone: phone.value,
+          userName: username.value,
+          phoneNumber: phone.value,
           email: email.value,
           avatar: "./images/user/user.jpg",
-          password: MD5(password.value),
+          passWord: MD5(password.value),
         });
       firebase
         .auth()
