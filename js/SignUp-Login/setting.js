@@ -278,13 +278,6 @@ async function changeAvatar() {
       if (file) {
         var storageRef = firebase.storage().ref("avatar/" + file.name);
         storageRef.put(file);
-        const user = await firebase
-          .firestore()
-          .collection("users")
-          .doc(id.docs[0].id)
-          .update({
-            avatar: file.name,
-          });
         const reader = new FileReader();
         reader.onload = (e) => {
           Swal.fire({
@@ -295,6 +288,38 @@ async function changeAvatar() {
         };
         console.log(file.name);
         reader.readAsDataURL(file);
+
+        // get url file - test
+        storageRef
+          .getDownloadURL()
+          .then(async (url) => {
+            // `url` is the download URL for 'images/stars.jpg'
+
+            // This can be downloaded directly:
+            var xhr = new XMLHttpRequest();
+            xhr.responseType = "blob";
+            xhr.onload = (event) => {
+              var blob = xhr.response;
+            };
+            xhr.open("GET", url);
+            xhr.send();
+
+            console.log(url);
+            const user = await firebase
+              .firestore()
+              .collection("users")
+              .doc(id.docs[0].id)
+              .update({
+                avatar: url,
+              });
+            // Or inserted into an <img> element
+            var img = document.getElementById("avatar");
+            img.setAttribute("src", url);
+          })
+          .catch((error) => {
+            // Handle any errors
+            console.log(error);
+          });
       }
     };
   }
