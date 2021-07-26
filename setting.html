@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="./css/style.css" />
     <!-- Responsive -->
     <link rel="stylesheet" href="./css/responsive.css" />
+    <!-- trung css -->
+    <link rel="stylesheet" href="./css/SignUp-Login/setting.css" />
     <!-- SweetAlert2 -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.19/sweetalert2.min.js"
@@ -244,10 +246,12 @@
                             "
                           >
                             <img
+                              id="AvatarMB"
                               src="images/user/user.jpg"
                               class="img-fluid avatar-40 rounded-circle"
                               alt="user"
                             />
+                            <i class="fas fa-camera"></i>
                           </a>
                           <div class="iq-sub-dropdown iq-user-dropdown">
                             <div class="iq-card shadow-none m-0">
@@ -330,9 +334,15 @@
                         <i class="ri-search-line"></i>
                       </a>
                       <div class="search-box iq-search-bar d-search">
-                        <form action="#" class="searchbox">
+                        <form
+                          id="searchFormWEB"
+                          action=""
+                          class="searchbox"
+                          onsubmit="return false"
+                        >
                           <div class="form-group position-relative">
                             <input
+                              id="searchInpWEB"
                               type="text"
                               class="text search-input font-size-12"
                               placeholder="type here to search..."
@@ -423,6 +433,7 @@
                         data-toggle="search-toggle"
                       >
                         <img
+                          id="AvatarWEB"
                           src="images/user/user.jpg"
                           class="img-fluid avatar-40 rounded-circle"
                           alt="user"
@@ -521,6 +532,7 @@
                   alt="user"
                   style="width: 150px; height: 150px"
                 />
+                <i id="camera" class="fas fa-camera fa-2x"></i>
               </div>
               <h4 id="username" class="mb-3">Name</h4>
               <hr />
@@ -674,11 +686,22 @@
       <a class="top" href="#top" id="top"> <i class="fa fa-angle-up"></i> </a>
     </div>
     <!-- back-to-top End -->
+
+    <!-- Firebase -->
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+    <!-- <script defer src="./models/entities/firebase.js" type="module"></script> -->
+    <script src="js/SignUp-Login/FireBase.js" type="module"></script>
+
     <!-- jQuery, Popper JS -->
-    <!-- <script
-      data-cfasync="false"
-      src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
-    ></script> -->
     <script src="./js/jquery-3.4.1.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -711,10 +734,13 @@
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-storage.js"></script>
 
     <script src="./js/SignUp-Login/FireBase.js" type="module"></script>
+    <script src="./js/SignUp-Login/md5.js" type="module"></script>
     <script src="./js/SignUp-Login/setting.js" type="module"></script>
     <script src="./film-tag/JS/basic2.js" type="module"></script>
     <script src="./film-tag/JS/style.js" type="module"></script>
     <script src="./js/SignUp-Login/signout.js"></script>
+    <script src="./js/SignUp-Login/avatar.js" type="module"></script>
+    <script src="./js/SignUp-Login/search.js"></script>
   </body>
 
   <!-- Mirrored from templates.iqonic.design/streamit/frontend/html/setting.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Jul 2021 14:28:56 GMT -->

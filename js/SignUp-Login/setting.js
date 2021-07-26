@@ -304,7 +304,7 @@ async function changeAvatar() {
             xhr.open("GET", url);
             xhr.send();
 
-            console.log(url);
+            // console.log(url);
             const user = await firebase
               .firestore()
               .collection("users")

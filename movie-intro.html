@@ -228,6 +228,7 @@
                             "
                           >
                             <img
+                            id="AvatarMB"
                               src="images/user/user.jpg"
                               class="img-fluid avatar-40 rounded-circle"
                               alt="user"
@@ -314,9 +315,15 @@
                         <i class="ri-search-line"></i>
                       </a>
                       <div class="search-box iq-search-bar d-search">
-                        <form action="#" class="searchbox">
+                        <form
+                          id="searchFormWEB"
+                          action=""
+                          class="searchbox"
+                          onsubmit="return false"
+                        >
                           <div class="form-group position-relative">
                             <input
+                              id="searchInpWEB"
                               type="text"
                               class="text search-input font-size-12"
                               placeholder="type here to search..."
@@ -407,6 +414,7 @@
                         data-toggle="search-toggle"
                       >
                         <img
+                        id="AvatarWEB"
                           src="images/user/user.jpg"
                           class="img-fluid avatar-40 rounded-circle"
                           alt="user"
@@ -698,6 +706,21 @@
       <a class="top" href="#top" id="top"> <i class="fa fa-angle-up"></i> </a>
     </div>
     <!-- back-to-top End -->
+
+    <!-- Firebase -->
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+    <!-- <script defer src="./models/entities/firebase.js" type="module"></script> -->
+    <script src="js/SignUp-Login/FireBase.js" type="module"></script>
+
     <!-- jQuery, Popper JS -->
     <script src="./js/jquery-3.4.1.min.js"></script>
     <script src="./js/popper.min.js"></script>
@@ -716,6 +739,8 @@
     <!-- Custom JS-->
     <script src="./js/custom.js"></script>
     <script src="./js/SignUp-Login/signout.js"></script>
+    <script src="./js/SignUp-Login/avatar.js" type="module"></script>
+    <script src="./js/SignUp-Login/search.js"></script>
   </body>
 
   <!-- Mirrored from templates.iqonic.design/streamit/frontend/html/movie-category.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Jul 2021 14:28:45 GMT -->

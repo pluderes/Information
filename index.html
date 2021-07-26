@@ -235,7 +235,8 @@
                             "
                           >
                             <img
-                              src="images/user/user.jpg"
+                              id="AvatarMB"
+                              src=""
                               class="img-fluid avatar-40 rounded-circle"
                               alt="user"
                             />
@@ -321,9 +322,15 @@
                         <i class="ri-search-line"></i>
                       </a>
                       <div class="search-box iq-search-bar d-search">
-                        <form action="./search.html" class="searchbox">
+                        <form
+                          id="searchFormWEB"
+                          action=""
+                          class="searchbox"
+                          onsubmit="return false"
+                        >
                           <div class="form-group position-relative">
                             <input
+                              id="searchInpWEB"
                               type="text"
                               class="text search-input font-size-12"
                               placeholder="type here to search..."
@@ -414,7 +421,8 @@
                         data-toggle="search-toggle"
                       >
                         <img
-                          src="images/user/user.jpg"
+                          id="AvatarWEB"
+                          src=""
                           class="img-fluid avatar-40 rounded-circle"
                           alt="user"
                         />
@@ -1279,5 +1287,7 @@
     <!-- Custom JS-->
     <script src="./js/custom.js"></script>
     <script src="./js/SignUp-Login/signout.js"></script>
+    <script src="./js/SignUp-Login/avatar.js" type="module"></script>
+    <script src="./js/SignUp-Login/search.js"></script>
   </body>
 </html>
