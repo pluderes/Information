@@ -11,5 +11,6 @@ searchInpWEB.onkeyup = (e) => {
   if (e.key === "Enter" || e.keycode === 13) {
     let param = link(searchInpWEB.value);
     window.location.href = `./search.html?kw=${param}`;
+    localStorage.setItem("kw", searchInpWEB.value);
   }
 };

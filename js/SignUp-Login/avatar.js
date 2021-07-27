@@ -13,7 +13,7 @@ if (emailLogin == null) {
     .get();
 
   const storageRef = userData.docs[0].data().avatar;
-  console.log(storageRef);
+  // console.log(storageRef);
 
   avtWEB.setAttribute("src", storageRef);
   avtMB.setAttribute("src", storageRef);

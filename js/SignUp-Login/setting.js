@@ -216,10 +216,9 @@ async function getListFilms() {
       console.log(listIDFilm);
       const films = await firebase.firestore().collection("films").get();
       for (let i = 0; i < listIDFilm.length; i++) {
-        // console.log(listIDFilm[i]);
         films.docs.forEach((doc) => {
           if (doc.id == listIDFilm[i]) {
-            console.log(doc.id, ` : `, listIDFilm[i]);
+            // console.log(doc.id, ` : `, listIDFilm[i]);
             divList.insertAdjacentHTML(
               "beforeend",
               `<basic2-para
@@ -230,7 +229,14 @@ async function getListFilms() {
             time = "${doc.data().time} m"
             like = "${doc.data().vote}"
             id = "${doc.id}"
-          ></basic2-para>`
+          ></basic2-para>
+          <div class="hover-buttons">
+          <span class="btn btn-hover"
+            ><i class="fa fa-close mr-1" aria-hidden="true"></i>
+            UnFollow
+          </span>
+        </div>
+          `
             );
           }
         });

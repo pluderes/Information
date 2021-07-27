@@ -1,6 +1,6 @@
-import { styleInLine } from "./style.js";
+import { styleInLine } from "./styleCpnFilm.js";
 
-class basic extends HTMLElement {
+class cpnFilm extends HTMLElement {
   constructor() {
     super();
     this.shadow = this.attachShadow({ mode: "open" });
@@ -21,44 +21,65 @@ class basic extends HTMLElement {
     const inner = `
         ${styleInLine}
         <li class="slide-item">
-          <div class="block-images position-relative">
-            <div class="img-box">
-                <img src="${this.props.avatar}" class="img-fluid" alt="">
+        <div class="block-images position-relative">
+          <div class="img-box">
+            <img
+              src="${this.props.avatar}"
+              class="img-fluid"
+              alt=""
+            />
+          </div>
+          <div class="block-description">
+            <h6 class="iq-title">
+              <a href="${this.props.href}">${this.props.name}</a>
+            </h6>
+            <div class="movie-time d-flex align-items-center my-2">
+              <div class="badge badge-secondary p-1 mr-2">${this.props.age}+</div>
+              <span class="text-white">${this.props.time}</span>
             </div>
-            <div class="block-description">
-                <h6 class="iq-title"><a href="${this.props.href}">${this.props.name}</a></h6>
-                <div class="movie-time d-flex align-items-center my-2">
-                  <div class="badge badge-secondary p-1 mr-2">${this.props.age}+</div>
-                  <span class="text-white">${this.props.time}</span>
-                </div>
-                <div class="hover-buttons">
-                  <span class="btn btn-hover iq-button">
-                  <i class="fa fa-play mr-1" aria-hidden="true"></i>
-                  Play Now
-                  </span>
-                </div>
-            </div>
-
-            <div class="block-social-info">
-                <ul class="list-inline p-0 m-0 music-play-lists">
-                    <li class="share">
-                      <span><i class="ri-share-fill"></i></span>
-                      <div class="share-box">
-                          <div class="d-flex align-items-center">
-                            <a href="https://www.facebook.com/sharer?u${this.props.href}"></i></a>
-                            <a href="https://twitter.com/intent/tweet?text=Currentlyreading" target="_blank" rel="noopener noreferrer" class="share-ico" tabindex="0"><i class="ri-twitter-fill"></i></a>
-                      </div>
-                    </li>
-                    <li>
-                        <span><i class="ri-heart-fill"></i></span>
-                        <span class="count-box">${this.props.like}</span>
-                    </li>
-                  <li><span><i class="ri-add-line" id="${this.props.id}"></i></span></li>
-  
-                </ul>
+            <div class="hover-buttons">
+              <span class="btn btn-hover"
+                ><i class="fa fa-play mr-1" aria-hidden="true"></i>
+                Play Now
+              </span>
             </div>
           </div>
-        </li>
+          <div class="block-social-info">
+            <ul class="list-inline p-0 m-0 music-play-lists">
+              <li class="share">
+                <span><i class="ri-share-fill"></i></span>
+                <div class="share-box">
+                  <div class="d-flex align-items-center">
+                    <a
+                      href="https://www.facebook.com/sharer?u=${this.props.href}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="share-ico"
+                      tabindex="0"
+                      ><i class="ri-facebook-fill"></i
+                    ></a>
+                    <a
+                      href="https://twitter.com/intent/tweet?text=Currentlyreading"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="share-ico"
+                      tabindex="0"
+                      ><i class="ri-twitter-fill"></i
+                    ></a>
+                    </div>
+                </div>
+              </li>
+              <li>
+                <span><i class="ri-heart-fill"></i></span>
+                <span class="count-box">${this.props.like}</span>
+              </li>
+              <li>
+                <span><i class="ri-add-line" id="${this.props.id}"></i></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
     `;
     this.shadow.innerHTML += inner;
     var shadowChild = this.shadow.getElementById(`${this.props.id}`);
@@ -70,7 +91,7 @@ class basic extends HTMLElement {
       try {
         shadowChild.onclick = () => {
           if (emailLogin == null) {
-            swal({
+            Swal.fire({
               title: `Please log in to use this feature!`,
               type: "warning",
               showCancelButton: false,
@@ -79,6 +100,7 @@ class basic extends HTMLElement {
               closeOnConfirm: false,
               closeOnCancel: false,
             });
+            Swal.fire("Please log in to use this feature!", "warning");
           } else {
             IDfilm = shadowChild.id;
             console.log(IDfilm);
@@ -149,4 +171,4 @@ class basic extends HTMLElement {
   }
 }
 
-customElements.define("basic-para", basic);
+customElements.define("basic-param", cpnFilm);

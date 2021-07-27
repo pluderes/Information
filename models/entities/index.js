@@ -53,14 +53,19 @@ async function addFilms(film) {
  */
 async function getFilms() {
   try {
-    const data = await firebase.firestore().collection("films").get();
-    rowContent.firstChild.firstChild.style.width = "unset";
-    rowContent.firstChild.firstChild.style.display = "flex";
+    const data = await firebase
+      .firestore()
+      .collection("films")
+      .orderBy("createdAt", "desc")
+      .limit(4)
+      .get();
+    // rowContent.style.width = "unset";
+    // rowContent.style.display = "flex";
     data.docs.forEach((doc) => {
       // console.log(doc.id, " => ", doc.data().filmName);
-      rowContent.firstChild.firstChild.insertAdjacentHTML(
+      rowContent.insertAdjacentHTML(
         "beforeend",
-        `<basic-para
+        `<basic-para class="col-sm-3" style="padding: 0 0 40px 0"
         avatar = "./img/02.jpg"
         href = "./movie-intro.html"
         name = "${doc.data().filmName}"
@@ -78,4 +83,3 @@ async function getFilms() {
   }
 }
 getFilms();
-
